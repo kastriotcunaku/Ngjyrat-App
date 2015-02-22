@@ -1,0 +1,233 @@
+@import url('reset.css');
+@import url('fonts.css');
+/* Variablat - Start */
+/* Variablat - End */
+html,
+body {
+  overflow: hidden;
+}
+html {
+  height: 100%;
+}
+body {
+  background-color: #ecf0f1;
+  min-height: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+.luaj-button {
+  display: block;
+  position: absolute;
+  background-color: #ecf0f1;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  margin-left: -125px;
+  margin-top: -125px;
+  max-width: 250px;
+  width: 100%;
+  max-height: 250px;
+  height: auto;
+}
+.luaj-button a {
+  max-width: 250px;
+  width: 100%;
+  max-height: 250px;
+  height: auto;
+  border-radius: 50%;
+  display: block;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #3c5064;
+  line-height: 250px;
+  text-decoration: none;
+}
+.luaj-button .colors {
+  display: block;
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  top: -20px;
+  left: -20px;
+  background: url('../img/colors-small.png') no-repeat center center;
+  z-index: -2;
+}
+.footer-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  display: block;
+}
+.footer-bar div {
+  width: 25%;
+  height: 5px;
+  display: inline-block;
+  float: left;
+}
+.footer-bar div.red {
+  background-color: #e74c3c;
+}
+.footer-bar div.yellow {
+  background-color: #f1c40f;
+}
+.footer-bar div.green {
+  background-color: #2ecb71;
+}
+.footer-bar div.blue {
+  background-color: #3498db;
+}
+#timer {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  display: block;
+  left: 50%;
+  top: 30%;
+  margin-left: -125px;
+  margin-top: -125px;
+}
+#timer span {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -40px;
+  margin-left: 10%;
+  width: 80%;
+  height: 80px;
+  display: block;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 80px;
+  text-transform: uppercase;
+}
+.rezultatiNeLoj {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #3c5064;
+  font-size: 18px;
+}
+.rekordi {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #3c5064;
+  font-size: 18px;
+}
+.kontrollat {
+  position: absolute;
+  width: 100%;
+  height: 64px;
+  left: 0;
+  bottom: 30px;
+  text-align: center;
+}
+.kontrollat .kol-2,
+.kontrollat .kol-3,
+.kontrollat .kol-4 {
+  float: left;
+  text-align: center;
+}
+.kontrollat .kol-2 {
+  width: 50%;
+}
+.kontrollat .kol-3 {
+  width: 33%;
+}
+.kontrollat .kol-4 {
+  width: 25%;
+}
+.kontrollat a {
+  display: inline-block;
+  line-height: 64px;
+  width: 64px;
+  height: 64px;
+  color: white;
+  border-radius: 45%;
+  font-size: 48px;
+}
+.kontrollat a.pasakt {
+  background-color: #e74c3c;
+}
+.kontrollat a.sakt {
+  background-color: #2ecb71;
+}
+.kontrollat a.back {
+  background-color: #3498db;
+}
+.kontrollat a.replay {
+  background-color: #2ecb71;
+}
+.kontrollat a.share {
+  background-color: #f1c40f;
+}
+.kontrollat a.setting {
+  background-color: #3498db;
+}
+.kontrollat a.leaderboard {
+  background-color: #e74c3c;
+}
+.kontrollat a.about {
+  background-color: #3498db;
+}
+.rezultatiFinal {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 0;
+  font-size: 64px;
+  font-weight: bold;
+  line-height: 64px;
+  margin-top: -32px;
+  color: #3c5064;
+}
+.highScore {
+  margin-top: 30px;
+}
+.highScore .yllat {
+  display: block;
+  text-align: center;
+  color: #f1c40f;
+  font-size: 48px;
+}
+.highScore .yllat i {
+  margin: 0 16px;
+  display: inline-block;
+}
+.highScore .yllat i:last-child {
+  -webkit-transform: rotate(16deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(16deg);
+  padding-top: 16px;
+}
+.highScore .yllat i:nth-child(2) {
+  position: relative;
+  width: 37px;
+  height: 84px;
+}
+.highScore .yllat i:nth-child(2):before {
+  position: absolute;
+  top: 27px;
+  left: 50%;
+  margin-left: -18px;
+}
+.highScore .yllat i:first-child {
+  -webkit-transform: rotate(-16deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(-16deg);
+  padding-top: 16px;
+}
+.highScore span {
+  display: block;
+  text-align: center;
+  font-size: 32px;
+  color: #3c5064;
+}
