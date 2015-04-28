@@ -7,7 +7,7 @@ googleplaygame.auth();
 $(function() {
     // var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
     // alert(deviceType);
-    parsePlugin.initialize("P7FJO3DLoq4XkyrwYC0xlRKOumaIeYJiqbBEa03K", "UXMf5ajPDXzQlFMqbJ7c1ku3GCyhKx3buVyXVHJX");
+    // parsePlugin.initialize("P7FJO3DLoq4XkyrwYC0xlRKOumaIeYJiqbBEa03K", "UXMf5ajPDXzQlFMqbJ7c1ku3GCyhKx3buVyXVHJX");
     FastClick.attach(document.body);
 });
 // function loadSound () {
