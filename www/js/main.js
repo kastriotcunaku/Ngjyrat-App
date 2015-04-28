@@ -2,37 +2,66 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 // $(document).ready(function(){
+googleplaygame.auth();
 
-// Efektet e zerit ne pergjigje te sakt dhe te gabuar
-function loadSound () {
-  createjs.Sound.registerSound("audio/right.ogg", "right");
-  createjs.Sound.registerSound("audio/wrong.ogg", "wrong");
-}
-loadSound();
-/* Background Audio */
-// function playAudio(id) {
-//     var audioElement = document.getElementById(id);
-//     var url = audioElement.getAttribute('src');
-//     var my_media = new Media(url,
-//             // success callback
-//              function () { console.log("playAudio():Audio Success"); },
-//             // error callback
-//              function (err) { console.log("playAudio():Audio Error: " + err); }
-//     );
-//            // Play audio
-//     my_media.volume = 0.8;
-//     my_media.autoplay = true;
-//     my_media.loop = true;
-//     my_media.play();
+$(function() {
+    // var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+    // alert(deviceType);
+    parsePlugin.initialize("P7FJO3DLoq4XkyrwYC0xlRKOumaIeYJiqbBEa03K", "UXMf5ajPDXzQlFMqbJ7c1ku3GCyhKx3buVyXVHJX");
+    FastClick.attach(document.body);
+});
+// function loadSound () {
+//   createjs.Sound.registerSound("audio/right.ogg", "right");
+//   createjs.Sound.registerSound("audio/wrong.ogg", "wrong");
 // }
-// playAudio('loop');
-var highScore;
+// loadSound();
+
+var highScore,
+    sound, 
+    soundUpdate;
+
+var rightSound = new Media("/android_asset/www/audio/right.ogg"),
+    wrongSound = new Media("/android_asset/www/audio/wrong.ogg");
+
+var db = openDatabase('ngjyrat', '1.0', 'Loja Ngjyrat - Databaza', 3 * 1024 * 1024);
+// var db = window.sqlitePlugin.openDatabase({name: "ngjyrat.db"});
+
+/* Insertimi ne Databaze */
+db.transaction(function(tx) {
+    tx.executeSql('CREATE TABLE IF NOT EXISTS CLASSIC (id unique, type, value)');
+    tx.executeSql('INSERT INTO CLASSIC (id, type, value) VALUES (1, "highScore", 0)');
+    tx.executeSql('INSERT INTO CLASSIC (id, type, value) VALUES (3, "sound", 1)');
+});
+function updateSound(update) {
+
+    if(update == true) {
+        $('a.zeri').toggleClass('on off');
+        $("a.zeri i").toggleClass('ion-android-volume-up ion-android-volume-off');
+    }
+    db.transaction(function(tx) {
+        tx.executeSql("SELECT * FROM CLASSIC WHERE id=3", [], function(tx, res) {
+            $('#sound').val(res.rows.item(0).value);
+            // console.log(res.rows.item(0).value);
+            sound = $('#sound').val();
+            if( sound == 0 ) {
+                if($('a.zeri').hasClass("on")) {
+                    $('a.zeri').removeClass('on').addClass('off');
+                    $("a.zeri i").toggleClass('ion-android-volume-up ion-android-volume-off');
+                }
+            }
+        }, function(tx, error){
+            alert('Sound was not updated on function: ' + error);
+        });
+    });
+    // console.log("sound: "+sound);
+}
 function startHome() {
     $.ajax({
         url: "ajax/home.html",
         cache: false
     }).done(function( html ) {
         $( "#content" ).html( html );
+        $('section#home').fadeIn("slow");
 
         $('.luaj-button .colors').animo({
             animation: "spinner",
@@ -46,24 +75,56 @@ function startHome() {
         });
 
         getResults();
+        updateSound(false);
         $('#luaj').click(function(event) {
             event.preventDefault();
             startGame();
+        });
+
+        $('a.zeri').click(function() {
+            if(sound == 1){
+                soundUpdate = 0 
+            } else { 
+                soundUpdate = 1 
+            }
+            // console.log("soundUpdate: " + soundUpdate);
+            db.transaction(function(tx) {
+                tx.executeSql("UPDATE CLASSIC SET value = "+ soundUpdate +" WHERE id=3", [], function(tx, res) {
+                    updateSound(true);
+                }, function(tx, error){
+                    alert('Sound was not updated on click: ' + error);
+                });
+            });
+        });
+
+        $('.about').click(function() {
+            $('section#home').fadeOut("slow");
+            rrethNesh();
+        });
+
+        $('.share').click(function() {
+            googleplaygame.isSignedIn(function (result) {
+                if(result) {
+                    googleplaygame.showPlayer(function (playerData) {
+                        alert("True: "+playerData['displayName']);
+                    });
+                } else {
+                    alert("False");
+                }
+            });
+        });
+
+        $('.leaderboard').click(function() {
+            var data = {
+                leaderboardId: "CgkIy6HVt5oOEAIQAA"
+            };
+            googleplaygame.showLeaderboard(leaderboardId);
         });
     });
 }
 
 startHome();
 
-
-// var db = openDatabase('ngjyrat', '1.0', 'Loja Ngjyrat - Databaza', 3 * 1024 * 1024);
-var db = window.sqlitePlugin.openDatabase({name: "ngjyrat.db"});
-
-/* Insertimi ne Databaze */
-db.transaction(function(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS CLASSIC (id unique, type, value)');
-    tx.executeSql('INSERT INTO CLASSIC (id, type, value) VALUES (1, "highScore", 0)');
-});
 
 function getResults() {
     db.transaction(function(tx) {
@@ -74,6 +135,9 @@ function getResults() {
         });
     });
 }
+
+
+
 
 function startGame() {
     $.ajax({
@@ -195,14 +259,16 @@ function klasik(r) {
             if(saktesia == 1) {
                 rezultatiNeLoj++;
                 $('.rezultatiNeLoj').text(rezultatiNeLoj);
-                createjs.Sound.play("right");
+                // if(sound == 1){ createjs.Sound.play("right"); }
+                if(sound == 1){ rightSound.play(); }
                 loop();
                 return;
             } else if (saktesia == 2) {
-                createjs.Sound.play("wrong");
+                // if(sound == 1){ createjs.Sound.play("wrong"); }
+                if(sound == 1){ wrongSound.play(); }
                 fundiLojes(rezultatiNeLoj, "Duhet te shtypej Jo Sakt");
                 return;
-            } else if (saktesia == 0) {
+            } else {
                 alert("Error: Saktesia = 0");
             }
         });
@@ -212,11 +278,11 @@ function klasik(r) {
             if(saktesia == 2) {
                 rezultatiNeLoj++;
                 $('.rezultatiNeLoj').text(rezultatiNeLoj);
-                createjs.Sound.play("right");
+                if(sound == 1){ rightSound.play(); }
                 loop();
                 return;
             } else if (saktesia == 1) {
-                createjs.Sound.play("wrong");
+                if(sound == 1){ wrongSound.play(); }
                 fundiLojes(rezultatiNeLoj, "Duhej te shtypej Sakt");
                 return;
             } else if (saktesia == 0) {
@@ -272,6 +338,12 @@ function fundiLojes(rezultatiNeLoj, mesazhi) {
                     });
                 });
             });
+
+            var data = {
+                score: rezultatiNeLoj,
+                leaderboardId: "CgkIy6HVt5oOEAIQAA"
+            };
+            googleplaygame.submitScore(data);
         }
         $('.rezultatiFinal').text(rezultatiNeLoj);
         $('section#rezultati').fadeIn('slow');
@@ -288,6 +360,23 @@ function fundiLojes(rezultatiNeLoj, mesazhi) {
         });
     });
     
+}
+
+function rrethNesh(){
+
+    $.ajax({
+        url: "ajax/rreth-nesh.html",
+        cache: false
+    }).done(function( html ) {
+        $( "#content" ).html( html );
+        $('section#rethNesh').fadeIn('slow');
+
+        $('#backButton').click(function(event) {
+            event.preventDefault();
+            $('section#rethNesh').fadeOut("slow");
+            startHome();
+        });
+    });
 }
     }
 

@@ -2,23 +2,23 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="author" content="Kastriot Cunaku" />
+    <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+    <link href="css/reset.css" rel="stylesheet" media="screen" />
     <link href="css/style.css" rel="stylesheet" media="screen" />
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen" />
-    <link href="css/ionicons.min.css" rel="stylesheet" media="screen" />
     <link href="bower_components/animo.js/animate+animo.css" rel="stylesheet" type="text/css">
+    <link href="css/ionicons.min.css" rel="stylesheet" media="screen" />
     <title>Loja</title>
 </head>
 
 <body>
-    <audio id="loop" src="audio/loop.ogg" type="audio/ogg"></audio>
     <header>
         <input type="hidden" id="input_highScore" value="0" />
+        <input type="hidden" id="sound" value="1" />
     </header>
     <div id="content">
         
@@ -33,9 +33,9 @@
     </footer>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/fastClick.js"></script>
     <script type="text/javascript" src="bower_components/animo.js/animo.js"></script>
     <script type="text/javascript" src="bower_components/jquery-circle-progress/dist/circle-progress.js"></script>
-    <script type="text/javascript" src="js/soundjs-0.6.0.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

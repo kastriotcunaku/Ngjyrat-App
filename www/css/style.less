@@ -1,10 +1,9 @@
-@import url('reset.css');
-@import url('fonts.css');
+@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-Regular.ttf);font-weight:400;font-style:normal}@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-Italic.ttf);font-weight:400;font-style:italic}@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-Bold.ttf);font-weight:700;font-style:normal}@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-BoldItalic.ttf);font-weight:700;font-style:italic}@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-SemiBold.ttf);font-weight:400;font-style:normal}@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-SemiBoldItalic.ttf);font-weight:400;font-style:italic}@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-Medium.ttf);font-weight:300;font-style:normal}@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-MediumItalic.ttf);font-weight:300;font-style:italic}@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-Light.ttf);font-weight:100;font-style:normal}@font-face{font-family:Exo;src:url(../fonts/exo/Exo2-LightItalic.ttf);font-weight:100;font-style:italic}
 
 /* Variablat - Start */
-@red: #e74c3c;
-@blue: #3498db;
-@green: #2ecb71;
+@red: #D50000;
+@blue: #2196F3;
+@green: #00C853;
 @orange: #e67e22;
 @brown: #a67235;
 @purple: #9e5fb8;
@@ -42,6 +41,7 @@ body {
     width: 100%;
     max-height: 250px;
     height: auto;
+    // box-shadow: 0 0 30px rgba(0,0,0,.5);
 
     a {
         max-width: 250px;
@@ -56,6 +56,7 @@ body {
         color: @text-color;
         line-height: 250px;
         text-decoration: none;
+        font-family: 'Times New Roman', serif;
     }
     .colors {
         display: block;
@@ -65,7 +66,7 @@ body {
         border-radius: 50%;
         top: -20px;
         left: -20px;
-        background: url('../img/colors-small.png') no-repeat center center;
+        background: url("../img/colors-small.png") no-repeat center center;
         z-index: -2;
     }
 }
@@ -124,6 +125,7 @@ body {
     top: 16px;
     right: 16px;
     color: @text-color;
+    font-family: Exo, sans-serif;
     font-size: 18px;
 }
 
@@ -132,6 +134,7 @@ body {
     top: 16px;
     left: 16px;
     color: @text-color;
+    font-family: Exo, sans-serif;
     font-size: 18px;
 }
 
@@ -189,7 +192,7 @@ body {
             background-color: @red;
         }
         &.about {
-            background-color: @blue;
+            background-color: @green;
         }
     }
 }
@@ -205,6 +208,7 @@ body {
     font-weight: bold;
     line-height: 64px;
     margin-top: -32px;
+    font-family: Exo, sans-serif;
     color: @text-color;
 }
 
@@ -250,4 +254,23 @@ body {
         color: @text-color;
     }
 
+}
+
+a.zeri {
+    display: inline-block;
+    line-height: 64px;
+    width: 64px;
+    height: 64px;
+    color: white;
+    border-radius: 45%;
+    font-size: 48px;
+    text-align: center;
+    margin: 16px 0 0 16px;
+
+    &.on {
+        background-color: @purple;
+    }
+    &.off {
+        background-color: lighten(@purple, 20%);
+    }
 }

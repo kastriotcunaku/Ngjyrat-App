@@ -4,9 +4,11 @@
 </head>
 <body>
     <!-- Home Section -->
-    <section id="home">
+    <section id="home" style="display:none;">
+        <a href="#" class="zeri on"><i class="icon ion-android-volume-up"></i></a>
+        
         <div class="luaj-button">
-            <a href="#" id="luaj">LUAJ</a>
+            <a href="#" id="luaj" style="font-family: TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;">LUAJ</a>
             <div class="colors"></div>
         </div>
 
@@ -24,6 +26,36 @@
                 <a href="#" class="about"><i class="icon ion-code-working"></i></a>
             </div>
         </div>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Tabela e rezultateve</h4>
+              </div>
+              <div class="modal-body">
+                <ul class="list-group" id="leaderboard-list">
+                  <li class="list-group-item">
+                    <span class="badge">28</span>
+                    #1 Kastriot
+                  </li>
+                  <li class="list-group-item">
+                    <span class="badge">25</span>
+                    #2 Filan Fisteku
+                  </li>
+                  <li class="list-group-item">
+                    <span class="badge">1</span>
+                    #3 Fistek Filani
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Mbylle</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </section>
 </body>
 

@@ -1,5 +1,63 @@
-@import url('reset.css');
-@import url('fonts.css');
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-Italic.ttf);
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-BoldItalic.ttf);
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-SemiBold.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-SemiBoldItalic.ttf);
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-Medium.ttf);
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-MediumItalic.ttf);
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-Light.ttf);
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: Exo;
+  src: url(../fonts/exo/Exo2-LightItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
 /* Variablat - Start */
 /* Variablat - End */
 html,
@@ -43,6 +101,7 @@ body {
   color: #3c5064;
   line-height: 250px;
   text-decoration: none;
+  font-family: 'Times New Roman', serif;
 }
 .luaj-button .colors {
   display: block;
@@ -52,7 +111,7 @@ body {
   border-radius: 50%;
   top: -20px;
   left: -20px;
-  background: url('../img/colors-small.png') no-repeat center center;
+  background: url("../img/colors-small.png") no-repeat center center;
   z-index: -2;
 }
 .footer-bar {
@@ -70,16 +129,16 @@ body {
   float: left;
 }
 .footer-bar div.red {
-  background-color: #e74c3c;
+  background-color: #d50000;
 }
 .footer-bar div.yellow {
   background-color: #f1c40f;
 }
 .footer-bar div.green {
-  background-color: #2ecb71;
+  background-color: #00c853;
 }
 .footer-bar div.blue {
-  background-color: #3498db;
+  background-color: #2196f3;
 }
 #timer {
   position: absolute;
@@ -111,6 +170,7 @@ body {
   top: 16px;
   right: 16px;
   color: #3c5064;
+  font-family: Exo, sans-serif;
   font-size: 18px;
 }
 .rekordi {
@@ -118,6 +178,7 @@ body {
   top: 16px;
   left: 16px;
   color: #3c5064;
+  font-family: Exo, sans-serif;
   font-size: 18px;
 }
 .kontrollat {
@@ -153,28 +214,28 @@ body {
   font-size: 48px;
 }
 .kontrollat a.pasakt {
-  background-color: #e74c3c;
+  background-color: #d50000;
 }
 .kontrollat a.sakt {
-  background-color: #2ecb71;
+  background-color: #00c853;
 }
 .kontrollat a.back {
-  background-color: #3498db;
+  background-color: #2196f3;
 }
 .kontrollat a.replay {
-  background-color: #2ecb71;
+  background-color: #00c853;
 }
 .kontrollat a.share {
   background-color: #f1c40f;
 }
 .kontrollat a.setting {
-  background-color: #3498db;
+  background-color: #2196f3;
 }
 .kontrollat a.leaderboard {
-  background-color: #e74c3c;
+  background-color: #d50000;
 }
 .kontrollat a.about {
-  background-color: #3498db;
+  background-color: #00c853;
 }
 .rezultatiFinal {
   position: absolute;
@@ -187,6 +248,7 @@ body {
   font-weight: bold;
   line-height: 64px;
   margin-top: -32px;
+  font-family: Exo, sans-serif;
   color: #3c5064;
 }
 .highScore {
@@ -230,4 +292,21 @@ body {
   text-align: center;
   font-size: 32px;
   color: #3c5064;
+}
+a.zeri {
+  display: inline-block;
+  line-height: 64px;
+  width: 64px;
+  height: 64px;
+  color: white;
+  border-radius: 45%;
+  font-size: 48px;
+  text-align: center;
+  margin: 16px 0 0 16px;
+}
+a.zeri.on {
+  background-color: #9e5fb8;
+}
+a.zeri.off {
+  background-color: #c9a6d7;
 }
